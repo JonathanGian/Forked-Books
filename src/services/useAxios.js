@@ -4,7 +4,7 @@ import axios from 'axios';
 // Custom hook to handle Axios requests
 const useAxios = (baseUrl) => {
   // State to store the response data
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   // State to manage alert messages
   const [alert, setAlert] = useState({ show: false, message: '', type: '' });
   // State to manage loading status
