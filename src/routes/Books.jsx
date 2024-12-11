@@ -17,7 +17,7 @@ import {
 function Books() {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { get, data,alert} = useAxios('http://localhost:3000');
+  const { get, data} = useAxios('http://localhost:3000');
 
 useEffect(() => {
 
