@@ -18,11 +18,9 @@ import {
 // Book Page
 function Books() {
   const api = 'http://localhost:3000';
-  const [isLoading, setIsLoading] = useState(true);
   const { get, data, loading} = useAxios(api);
-  
   const [searchTerm, setSearchTerm] = useState('');
-  const [books, setBooks] = useState([]);
+ 
 
 
 useEffect(() => {
