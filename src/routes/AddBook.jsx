@@ -12,6 +12,8 @@ import { DateField } from '@mui/x-date-pickers/DateField';
 import useAxios from '../services/useAxios';
 import { bookGenres } from '../genres';
 import { Stack, Typography } from '@mui/material';
+import bookIcon from '../assets/book-icon-2-flaticons.png';
+
 /* Function to add a new book */
 function AddBook() {
   /* using post with useAxios */
@@ -21,6 +23,7 @@ function AddBook() {
     author: '',
     name: '',
     genres: [],
+    img: bookIcon,
     completed: false,
     start: null,
     end: null,
