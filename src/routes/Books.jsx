@@ -56,22 +56,9 @@ const handleSearchChange = (event) => {
   const term = event.target.value.toLowerCase();
   setSearchTerm(term);
 
-/* 
-  if (term === '') {
-   
-    setFilteredBooks(data);
-  } else {
-    // Filter books based on title, author, or genres
-    const filtered = books.filter(
-      (book) =>
-        book.name.toLowerCase().includes(term) ||
-        book.author.toLowerCase().includes(term) ||
-        book.genres.some((genre) => genre.toLowerCase().includes(term))
-    );
-    setFilteredBooks(filtered);
-  } */ 
+
 };
-  // TODO: Implement search functionality
+ 
   return (
     <Box sx={{ mx: 'auto', p: 2 }}>
       {/* Search Field */}
@@ -134,12 +121,12 @@ const handleSearchChange = (event) => {
                   pl: 2,
                 }}
               >
-                <Rating
-                  name="read-only"
-                  value={book.stars}
-                  readOnly
-                  size="small"
-                />
+                   <Rating
+              name="read-only"
+              value={book.stars || 0} // Show 0 stars if no rating is present
+              readOnly
+              precision={0.5}
+            />
                 <Button size="small">Learn More</Button>
               </CardActions>
             </Card>

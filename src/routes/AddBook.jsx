@@ -17,11 +17,11 @@ import bookIcon from '../assets/book-icon-2-flaticons.png';
 /* Function to add a new book */
 function AddBook() {
   /* using post with useAxios */
-  const { alert, post } = useAxios('http://localhost:3000');
-  const [rateValue, setRateValue] = useState(3);
+  const { alert, post } = useAxios("http://localhost:3000");
+ 
   const [book, setBook] = useState({
-    author: '',
-    name: '',
+    author: "",
+    name: "",
     genres: [],
     img: bookIcon,
     completed: false,
@@ -29,7 +29,7 @@ function AddBook() {
     end: null,
     stars: null,
   });
-/* Updates the genres field in the book state when the genre selection changes */
+  /* Updates the genres field in the book state when the genre selection changes */
   const genreChangeHandler = (event) => {
     const { value } = event.target;
     setBook({
@@ -37,26 +37,34 @@ function AddBook() {
       genres: typeof value === 'string' ? value.split(',') : value,
     });
   };
-/* Updates the stars when book state changes */
-  const rateChangeHandler = (event) => {
-    const { value } = event.target;
-    setBook({
-      ...book,
-      stars: value,
-    });
+  /* Updates the stars when book state changes */
+  const rateChangeHandler = (event, newValue) => {
+    setBook((prevBook) => ({
+      ...prevBook,
+      stars: newValue, 
+    }));
   };
-/* Updates the book state for other form fields. Handles both checkbox and other input types. */
+  
+  /* Updates the book state for other form fields. Handles both checkbox and other input types. */
+  
   const addBookHandler = (e) => {
     const { name, value, checked, type } = e.target;
-    if (type === 'checkbox' && name === 'completed') {
-      setBook({ ...book, [name]: checked });
+    if (type === "checkbox" && name === "completed") {
+      setBook((prevBook) => ({ ...prevBook, [name]: checked }));
     } else {
-      setBook({ ...book, [name]: value });
+      setBook((prevBook) => ({ ...prevBook, [name]: value }));
     }
   };
-/* Submits the form by making a POST request to the books endpoint with the current book state.*/
-  function postHandler() {
-    post('books', book);
+  /* Submits the form by making a POST request to the books endpoint with the current book state.*/
+  function postHandler(e) {
+    e.preventDefault(); // Prevent page refresh
+
+    // Remove rating from the final book object
+    const { "rating": _, ...finalBook } = {
+      ...book,
+      stars: parseFloat(book.stars), // Ensure `stars` is a number
+    };
+    post("books", finalBook);
   }
 
   return (
@@ -114,21 +122,25 @@ function AddBook() {
           control={<Checkbox checked={book.completed} />}
           label="Completed"
         />
-{/* Started and ended inputs */}
+        {/* Started and ended inputs */}
         <DateField name="start" label="Started" />
         <DateField name="end" label="Finished" disabled={!book.completed} />
-        <Stack spacing={1}>
+          
           {/* Star ratings */}
+          <Stack spacing={1}
+          // Fix for the UI issues
+          sx={{flexDirection: "row"}}>
           <Rating
-            name="stars"
-            value={rateValue}
-            onClick={rateChangeHandler}
+            name="rating"
+            value={book.stars || 0}
+            onChange={rateChangeHandler} 
             size="large"
-            onChange={(event, newValue) => {
-              setRateValue(newValue);
-            }}
+            precision={0.5}
+           
           />
+        
         </Stack>
+        
         <Button variant="contained" type="submit">
           Add new
         </Button>
