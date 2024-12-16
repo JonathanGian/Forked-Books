@@ -107,7 +107,7 @@ const handleSearchChange = (event) => {
               key={book.name}
             >
               <CardMedia
-                sx={{ height: 250 }}
+                sx={{ height: 250,backgroundSize: 'contain' }}
                 image={book.img}
                 title={book.name}
               />
