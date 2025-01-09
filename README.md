@@ -1,5 +1,10 @@
 # Books MVP
-**⚠ Warning:** The API server is spun down after a period of inactivity, so you might have to wait up to 50 seconds for the server to spin up on first launch.
+![warning](https://img.shields.io/badge/Warning-Important-red?style=flat-square)
+ The API server is spun down after a period of inactivity, so you might have to wait up to 50 seconds for the server to spin up on first launch.
+
+![Note](https://img.shields.io/badge/Note-This%20app%20uses%20a%20mock%20server%20and%20the%20data%20uploaded%20is%20not%20persistant-lightblue?style=flat&labelColor=red
+) 
+
 ## Project Overview
 
 The **Books MVP Project** is a React-based web application designed to manage a list of books. The app includes features such as searching, viewing book details, adding new books, and displaying book ratings. This project focuses on improving the user experience and maintainability through incremental updates.
@@ -19,31 +24,40 @@ Before starting, ensure you have the following installed:
    ```bash
    git clone https://github.com/<your-username>/Books-MVP.git
    ````
+
 2. Navigate to the project directory:
+
 ```bash
 cd Books-MVP
 ```
+
 3. Install dependencies:
+
 ```bash
 npm install
 ```
+
 or
+
 ```bash
 yarn install
 ```
+
 4. Start development server:
+
 ```bash
 npm run dev
 ```
+
 5. Check terminal for url of the app:
 (default:  http://localhost:5173/)
+
 ```bash
  VITE v5.0.9  ready in 316 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
   ➜  press h + enter to show help
-
 ```
 
 ### 1. **Ticket #101 - Enhance code documentation**
