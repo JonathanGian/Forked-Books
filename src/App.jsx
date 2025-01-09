@@ -1,7 +1,7 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { 
+createBrowserRouter,
+RouterProvider } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Root from './routes/Root';
 import Books from './routes/Books';
 import Book from './routes/Book';
@@ -32,13 +32,11 @@ function App() {
       ],
     },
   ]);
-// Wrapping the RouterProvider component with ThemeProvider and LocalizationProvider
+
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
         <RouterProvider router={router}></RouterProvider>
       </ThemeProvider>
-    </LocalizationProvider>
   );
 }
 
