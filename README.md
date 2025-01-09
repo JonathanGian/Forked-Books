@@ -1,7 +1,50 @@
 # Books MVP
+**⚠ Warning:** The API server is spun down after a period of inactivity, so you might have to wait up to 50 seconds for the server to spin up on first launch.
+## Project Overview
 
-Your task is to address all issues listed below.  
-Fork this project and solve the tickets one by one by creating a branch for each ticket, implementing the solution, and merging it into the main branch. **Keep each branch after merging.**
+The **Books MVP Project** is a React-based web application designed to manage a list of books. The app includes features such as searching, viewing book details, adding new books, and displaying book ratings. This project focuses on improving the user experience and maintainability through incremental updates.
+
+## Getting Started
+
+### Prerequisites
+
+Before starting, ensure you have the following installed:
+
+- **Node.js** (v14 or later)
+- **npm** or **yarn**
+
+### Installation
+
+1. Clone the forked repository:
+   ```bash
+   git clone https://github.com/<your-username>/Books-MVP.git
+   ````
+2. Navigate to the project directory:
+```bash
+cd Books-MVP
+```
+3. Install dependencies:
+```bash
+npm install
+```
+or
+```bash
+yarn install
+```
+4. Start development server:
+```bash
+npm run dev
+```
+5. Check terminal for url of the app:
+(default:  http://localhost:5173/)
+```bash
+ VITE v5.0.9  ready in 316 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+```
 
 ### 1. **Ticket #101 - Enhance code documentation**
 

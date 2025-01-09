@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 
 // Book Page
 function Books() {
-  const api = 'http://localhost:3000';
+  const api = 'https://json-server-54mh.onrender.com';
   const { get, data, loading } = useAxios(api);
   const [searchTerm, setSearchTerm] = useState('');
 
