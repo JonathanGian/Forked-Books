@@ -1,41 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Box, Typography, CircularProgress, Button, Chip, CardMedia, Paper, Grid, Rating } from '@mui/material';
+import { Box, Typography, CircularProgress, Button, Chip, CardMedia, Paper, Grid, Rating,Checkbox} from '@mui/material';
 import useAxios from '../services/useAxios';
 
 function Book() {
-  const { id } = useParams();
-  const api = "https://json-server-54mh.onrender.com"
-  const { get,data} = useAxios(api);
-  const [isloading, setisloading] = useState(true);
-    const navigate = useNavigate();
-  useEffect(() => {
-      if(data.length === 0){
-        fetchBook();
-      }else{
-        setisloading(false);
-        }
-      
-    }, [data]);
+const { id } = useParams();
+const api = "https://json-server-54mh.onrender.com"
+const { get,data} = useAxios(api);
+const [isloading, setisloading] = useState(true);
+const navigate = useNavigate();
 
-    const fetchBook = async () => {
-        try {
-          await get(`books/${id}`);
-        } catch (error) {
-          console.error("Error fetching books:", error);
-        }
-      };
+useEffect(() => {
+  if(data.length === 0){
+    fetchBook();
+  }else{
+    setisloading(false);
+    }
+ }, [data]);
+
+const fetchBook = async () => {
+    try {
+      await get(`books/${id}`);
+    } catch (error) {
+    console.error("Error fetching books:", error);
+    }
+};
 
 
-  if (isloading) {
+if (isloading) {
     return <CircularProgress />;
-  }
+}
 
-  if (!data) {
+if (!data) {
     return <Typography>No book details available.</Typography>;
-  }
+}
 
-  return (
+return (
     <Box
       sx={{
         display: 'flex',
@@ -100,7 +100,19 @@ function Book() {
                 </Typography>
               )}
             </Box>
-
+            {/* Start and End Dates */}
+            {data.start && (
+            <Typography variant="body2" color="textSecondary" sx={{ mt: 2 }}>
+           Started: {data.start ? new Date(data.start).toLocaleDateString() : 'Not yet'}
+            </Typography>
+            )}                
+            {data.completed && data.end && (
+            <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
+            Completed: {data.end ? new Date(data.end).toLocaleDateString() : 'Not yet'}
+            
+            </Typography>
+            
+            )}
             {/* Rating */}
             {data.stars && (
               <Box sx={{ mt: 3 }}>

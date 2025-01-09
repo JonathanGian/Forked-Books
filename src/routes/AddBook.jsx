@@ -8,7 +8,6 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Alert from '@mui/material/Alert';
-import { DateField } from '@mui/x-date-pickers/DateField';
 import useAxios from '../services/useAxios';
 import { bookGenres } from '../genres';
 import { Stack, Typography } from '@mui/material';
@@ -17,8 +16,7 @@ import bookIcon from '../assets/book-icon-2-flaticons.png';
 /* Function to add a new book */
 function AddBook() {
   /* using post with useAxios */
-  const api = "https://json-server-54mh.onrender.com"
-  const { alert, post } = useAxios(api);
+  const { alert, post } = useAxios("https://json-server-54mh.onrender.com");
  
   const [book, setBook] = useState({
     author: "",
@@ -30,6 +28,7 @@ function AddBook() {
     end: null,
     stars: null,
   });
+
   /* Updates the genres field in the book state when the genre selection changes */
   const genreChangeHandler = (event) => {
     const { value } = event.target;
@@ -38,6 +37,7 @@ function AddBook() {
       genres: typeof value === 'string' ? value.split(',') : value,
     });
   };
+
   /* Updates the stars when book state changes */
   const rateChangeHandler = (event, newValue) => {
     setBook((prevBook) => ({
@@ -47,24 +47,33 @@ function AddBook() {
   };
   
   /* Updates the book state for other form fields. Handles both checkbox and other input types. */
-  
   const addBookHandler = (e) => {
     const { name, value, checked, type } = e.target;
-    if (type === "checkbox" && name === "completed") {
-      setBook((prevBook) => ({ ...prevBook, [name]: checked }));
-    } else {
-      setBook((prevBook) => ({ ...prevBook, [name]: value }));
-    }
+    
+    setBook((prevBook) => ({
+      ...prevBook,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
+    const handleDateChange = (name, value) => {
+      setBook((prevBook) => ({
+      ...prevBook,
+      [name]: value,
+    }));
+  };
+  
   /* Submits the form by making a POST request to the books endpoint with the current book state.*/
   function postHandler(e) {
     e.preventDefault(); // Prevent page refresh
-
-    // Remove rating from the final book object
-    const { "rating": _, ...finalBook } = {
+  
+    // Validate and provide default values
+    const finalBook = {
       ...book,
-      stars: parseFloat(book.stars), // Ensure `stars` is a number
+      stars: parseFloat(book.stars) || 0, // Ensure `stars` is a number
     };
+   
+  
+    // Make the POST request
     post("books", finalBook);
   }
 
@@ -85,7 +94,6 @@ function AddBook() {
           id="outlined-basic"
           label="Title"
           variant="outlined"
-          required
         />
         {/* Author Textfield */}
         <TextField
@@ -93,7 +101,6 @@ function AddBook() {
           id="outlined-basic"
           label="Author"
           variant="outlined"
-          required
         />
         {/* Image Textfield */}
         <TextField
@@ -121,14 +128,35 @@ function AddBook() {
         </Select>
         {/* Completed checkbox */}
         <FormControlLabel
-          name="completed"
-          control={<Checkbox checked={book.completed} />}
+          control={
+            <Checkbox
+            name='completed'
+              checked={book.completed}
+              onChange={addBookHandler}
+            />
+          }
           label="Completed"
         />
-        {/* Started and ended inputs */}
-        <DateField name="start" label="Started" />
-        <DateField name="end" label="Finished" disabled={!book.completed} />
-          
+
+      {/* Start Date */}
+      <TextField
+  name="start"
+  label="Started"
+  type="date"
+  InputLabelProps={{ shrink: true }}
+  value={book.start || ''}
+  onChange={(e) => handleDateChange('start', e.target.value)}
+/>
+        {/* End Date */}
+        <TextField
+  name="end"
+  label="Finished"
+  type="date"
+  InputLabelProps={{ shrink: true }}
+  value={book.end || ''}
+  onChange={(e) => handleDateChange('end', e.target.value)}
+  disabled={!book.completed}
+/>
           {/* Star ratings */}
           <Stack spacing={1}
           // Fix for the UI issues
