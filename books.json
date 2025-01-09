@@ -12,7 +12,8 @@
       "start": "2023-03-10",
       "end": "2023-03-25",
       "stars": 5,
-      "img": "https://upload.wikimedia.org/wikipedia/en/0/05/Littleprince.JPG"
+      "img": "https://upload.wikimedia.org/wikipedia/en/0/05/Littleprince.JPG",
+      "description": "An enchanting tale of a young prince exploring the universe, learning valuable lessons about love, loss, and human nature."
     },
     {
       "id": 2,
@@ -26,7 +27,8 @@
       "start": "2023-04-05",
       "end": "2023-04-30",
       "stars": 4,
-      "img": "https://upload.wikimedia.org/wikipedia/en/e/e4/Steve_Jobs_by_Walter_Isaacson.jpg"
+      "img": "https://upload.wikimedia.org/wikipedia/en/e/e4/Steve_Jobs_by_Walter_Isaacson.jpg",
+      "description": "A deep dive into the life of Steve Jobs, exploring his revolutionary vision, leadership, and the challenges he faced in building Apple."
     },
     {
       "id": 3,
@@ -40,7 +42,8 @@
       "start": "2023-05-10",
       "end": "2023-05-31",
       "stars": 5,
-      "img": "https://images.booksense.com/images/935/524/9780451524935.jpg"
+      "img": "https://images.booksense.com/images/935/524/9780451524935.jpg",
+      "description": "A chilling dystopian story set in a totalitarian world of surveillance, where individualism is a crime and 'Big Brother' sees all."
     },
     {
       "id": 4,
@@ -54,7 +57,8 @@
       "start": "2023-06-15",
       "end": "2023-07-10",
       "stars": 5,
-      "img": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/61pX0NiXdvL._AC_.jpg"
+      "img": "https://m.media-amazon.com/images/I/91A6EgLH+2L._SL1500_.jpg",
+      "description": "The magical journey of a young wizard discovering his destiny as he faces dark forces and uncovers the secrets of his past."
     },
     {
       "author": "David JP Phillips",
@@ -67,29 +71,8 @@
       "end": null,
       "stars": 5,
       "id": 5,
-      "img": "https://www.davidjpphillips.com/wp-content/uploads/2023/08/highonlife_copy-195x300.jpg"
-    },
-    {
-      "author": "",
-      "name": "Test book",
-      "genres": [],
-      "img": "/src/assets/book-icon-2-flaticons.png",
-      "completed": false,
-      "start": null,
-      "end": null,
-      "stars": 3.5,
-      "id": 6
-    },
-    {
-      "author": "",
-      "name": "test 2",
-      "genres": [],
-      "img": "/src/assets/book-icon-2-flaticons.png",
-      "completed": false,
-      "start": null,
-      "end": null,
-      "stars": 1.5,
-      "id": 7
+      "img": "https://www.davidjpphillips.com/wp-content/uploads/2023/08/highonlife_copy-195x300.jpg",
+      "description": "A guide to leading a fulfilling life by embracing positivity, mindfulness, and personal development."
     }
   ]
 }

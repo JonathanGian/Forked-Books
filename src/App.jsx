@@ -26,8 +26,9 @@ function App() {
       element: <Root />,
       children: [
         { path: '/', element: <Books /> },
-        { path: '/book', element: <Book /> },
         { path: '/addnew', element: <AddBook /> },
+        { path: '/books', element: <AddBook /> },
+        { path: '/books/:id', element: <Book /> },
       ],
     },
   ]);
