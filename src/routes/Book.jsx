@@ -5,8 +5,6 @@ import useAxios from '../services/useAxios';
 
 function Book() {
   const { id } = useParams();
-  const [book, setBook] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const { get,data,loading} = useAxios('http://localhost:3000');
     const navigate = useNavigate();
   useEffect(() => {
@@ -15,12 +13,10 @@ function Book() {
       }
       
     }, [data]);
-    console.log("ID from URL:", id);
-    console.log("Book Name:", data.name);
+
     const fetchBook = async () => {
         try {
           await get(`books/${id}`);
-          setBook(data);
         } catch (error) {
           console.error("Error fetching books:", error);
         }
@@ -65,7 +61,7 @@ function Book() {
               mb: { xs: 2, sm: 0 },
               mr: { sm: 4 },
             }}
-            image={data.img}
+            image={data.img|| "/assets/book-icon-2-flaticons.png"}
             title={data.name}
           />
 

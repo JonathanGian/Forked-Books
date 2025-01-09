@@ -99,7 +99,7 @@ function Books() {
               {/* Book Cover */}
               <CardMedia
                 sx={{ height: 250, backgroundSize: 'contain' }}
-                image={book.img}
+                image={book.img || '/assets/book-icon-2-flaticons.png'}
                 title={book.name}
               />
               {/* Genre */}
