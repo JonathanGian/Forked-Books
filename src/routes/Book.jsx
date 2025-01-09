@@ -5,12 +5,16 @@ import useAxios from '../services/useAxios';
 
 function Book() {
   const { id } = useParams();
-  const { get,data,loading} = useAxios('http://localhost:3000');
+  const api = "https://json-server-54mh.onrender.com"
+  const { get,data} = useAxios(api);
+  const [isloading, setisloading] = useState(true);
     const navigate = useNavigate();
   useEffect(() => {
       if(data.length === 0){
         fetchBook();
-      }
+      }else{
+        setisloading(false);
+        }
       
     }, [data]);
 
@@ -23,7 +27,7 @@ function Book() {
       };
 
 
-  if (loading) {
+  if (isloading) {
     return <CircularProgress />;
   }
 
@@ -78,20 +82,24 @@ function Book() {
               gutterBottom
               sx={{ mt: 2, fontStyle: 'italic' }}
             >
-              {data.description}
+              {data.description || 'No description available.'}
             </Typography>
 
             {/* Genres */}
-            {data.genres && (
-              <Box sx={{ mt: 2 }}>
-                <Typography variant="h6">Genres:</Typography>
+            <Box sx={{ mt: 2 }}>
+              <Typography variant="h6">Genres:</Typography>
+              {data.genres && data.genres.length > 0 ? (
                 <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mt: 1 }}>
                   {data.genres.map((genre, index) => (
                     <Chip key={index} label={genre} variant="outlined" />
                   ))}
                 </Box>
-              </Box>
-            )}
+              ) : (
+                <Typography variant="body2" color="textSecondary">
+                  No genres available
+                </Typography>
+              )}
+            </Box>
 
             {/* Rating */}
             {data.stars && (

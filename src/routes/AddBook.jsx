@@ -17,7 +17,8 @@ import bookIcon from '../assets/book-icon-2-flaticons.png';
 /* Function to add a new book */
 function AddBook() {
   /* using post with useAxios */
-  const { alert, post } = useAxios("http://localhost:3000");
+  const api = "https://json-server-54mh.onrender.com"
+  const { alert, post } = useAxios(api);
  
   const [book, setBook] = useState({
     author: "",
@@ -84,6 +85,7 @@ function AddBook() {
           id="outlined-basic"
           label="Title"
           variant="outlined"
+          required
         />
         {/* Author Textfield */}
         <TextField
@@ -91,6 +93,7 @@ function AddBook() {
           id="outlined-basic"
           label="Author"
           variant="outlined"
+          required
         />
         {/* Image Textfield */}
         <TextField
