@@ -68,6 +68,28 @@
       "stars": 5,
       "id": 5,
       "img": "https://www.davidjpphillips.com/wp-content/uploads/2023/08/highonlife_copy-195x300.jpg"
+    },
+    {
+      "author": "",
+      "name": "Test book",
+      "genres": [],
+      "img": "/src/assets/book-icon-2-flaticons.png",
+      "completed": false,
+      "start": null,
+      "end": null,
+      "stars": 3.5,
+      "id": 6
+    },
+    {
+      "author": "",
+      "name": "test 2",
+      "genres": [],
+      "img": "/src/assets/book-icon-2-flaticons.png",
+      "completed": false,
+      "start": null,
+      "end": null,
+      "stars": 1.5,
+      "id": 7
     }
   ]
 }
