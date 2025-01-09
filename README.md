@@ -108,3 +108,24 @@ npm run dev
     As a user, I want the `SinglePage` component to match the style of the rest of the application for a seamless experience.  
   - **Task**:  
     Use Material-UI to style the `SinglePage` component, ensuring it aligns with the application's existing design.
+#
+### Link to live site: 
+- Live [page](https://books-mvp.netlify.app/)
+
+## Sources 
+
+- [GitHub Guides - masterin markdown](https://guides.github.com/features/mastering-markdown/)
+- [Make a README](https://www.makeareadme.com/)
+
+## Authors and acknowledgment
+
+<span class="highlight2">Margit Tennosaar</span>
+- [GitHub](https://github.com/margittennosaar)
+- [LinkedIn](https://www.linkedin.com/in/margittennosaar/)
+
+Special thanks to my school and instructors for guiding me through this project.
+
+## Sources and References
+-	React Documentation
+-	JSON Server Guide
+-	Vite Documentation
